@@ -1,5 +1,4 @@
 from flask import Flask
-#from flask_restx import Resource, Namespace
 from extensions import Resource, ns
 from models import db, course, data
 from api_model import api, first_model, first_input_model, second_model, second_input_model

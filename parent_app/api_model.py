@@ -1,4 +1,4 @@
-from flask_restx import fields
+from extensions import fields
 from extensions import api
 first_model = api.model('data1', {
     "id": fields.Integer,

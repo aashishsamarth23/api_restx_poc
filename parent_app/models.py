@@ -1,4 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
+from extensions import SQLAlchemy
 db = SQLAlchemy()
 class data(db.Model):
     id = db.Column(db.Integer, primary_key = True)

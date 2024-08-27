@@ -1,5 +1,5 @@
 from flask import Flask
-from extensions import Resource, ns
+from extensions import Resource, ns, ns1
 from models import db, course, data
 from api_model import api, first_model, first_input_model, second_model, second_input_model
 
@@ -61,15 +61,19 @@ class api_course(Resource):
     
 
 
+api.add_namespace(ns1)
+    
 
-@ns.route("/student/get_update_delete/<int:id>")
+
+
+@ns1.route("/student/get_update_delete/<int:id>")
 class api_update_delete(Resource):
-    @ns.marshal_list_with(first_model)
+    @ns1.marshal_list_with(first_model)
     def get(self, id):
         test = data.query.get(id)
         return test, 201
-    @ns.marshal_list_with(first_model)
-    @ns.expect(first_input_model)
+    @ns1.marshal_list_with(first_model)
+    @ns1.expect(first_input_model)
     def put(self, id):
         this_course = data.query.get(id)
         if this_course is None:
@@ -78,7 +82,7 @@ class api_update_delete(Resource):
         this_course.course = ns.payload["course"]
         db.session.commit()
         return this_course
-    @ns.marshal_list_with(first_model)
+    @ns1.marshal_list_with(first_model)
     def delete(self, id):
         this_course = data.query.get(id)
         if this_course is None:

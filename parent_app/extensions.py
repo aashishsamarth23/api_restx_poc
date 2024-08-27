@@ -6,4 +6,5 @@ from flask_restx import fields
 
 
 api = Api()
-ns = Namespace("api")
+ns = Namespace("without_id")
+ns1 = Namespace("with_id")
